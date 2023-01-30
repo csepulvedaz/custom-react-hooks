@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
-export const useMount = (callback) => {
+const useMount = (callback) => {
   useEffect(callback, []);
 };
+
+export default useMount;

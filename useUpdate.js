@@ -1,20 +1,19 @@
 import { useRef, useEffect } from "react";
 
-export const useUpdate = (effectCallback, deps = []) => {
+const useUpdate = (effectCallback, deps = []) => {
   const isFirstMount = useRef(false);
 
   useEffect(() => {
-    return () => {
-      isFirstMount.current = false;
-    };
+    return () => (isFirstMount.current = false);
   }, []);
 
   useEffect(() => {
     // Do not execute effect callback for the first time
     if (!isFirstMount.current) {
-      isFirstMount.current = true;
-    } else {
       return effectCallback();
     }
+    isFirstMount.current = true;
   }, deps);
 };
+
+export default useUpdate;

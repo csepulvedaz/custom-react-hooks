@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useSetState = (initState) => {
+const useSetState = (initState) => {
   const [state, setState] = useState(initState);
 
   const setMergeState = (value) => {
@@ -12,3 +12,5 @@ export const useSetState = (initState) => {
 
   return [state, setMergeState];
 };
+
+export default useSetState;
